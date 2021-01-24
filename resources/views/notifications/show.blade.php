@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        @forelse ($notifications as $notification)
+            
+            <li>
+                @if ($notification->type === 'App\Notifications\PaymentReceived')
+                    We have received a payment of ${{ $notification->data['amount'] / 100 }} for you.
+                @endif
+            </li>
+            
+        @empty
+            <li>You have no unread notifications at this time.</li>
+
+        @endforelse
+    </ul>
+</body>
+</html>
